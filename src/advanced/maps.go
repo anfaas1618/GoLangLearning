@@ -19,6 +19,6 @@ func main() {
 	for k, v := range statePopulation {
 		fmt.Println("the key is ", k)
 		fmt.Println("the value is ", v)
-
+		fmt.Println("************************")
 	}
 }
