@@ -20,31 +20,43 @@ func main() {
 	var email string
 	var userTickets int
 
-	for {
+	for remainingTickets > 0 || len(bookings) < 50 {
 		//ask for user input
 		fmt.Println("enter your first firstname :")
-		fmt.Scan(&firstname)
+		_, err := fmt.Scan(&firstname)
+		if err != nil {
+			return
+		}
 		fmt.Println("enter your last name")
 		fmt.Scan(&lastname)
 		fmt.Printf("enter your email")
 		fmt.Scan(&email)
 		fmt.Printf("enter number of tickets: ")
 		fmt.Scan(&userTickets)
-		bookings = append(bookings, firstname+" "+lastname)
-		fmt.Printf("the whole array %v", bookings)
-		remainingTickets = remainingTickets - userTickets
+		if userTickets <= remainingTickets {
+			bookings = append(bookings, firstname+" "+lastname)
 
-		fmt.Printf("thank you, %v %v for bookimh %v tickets recipt will be sent to %v \n",
-			firstname, lastname, userTickets, email)
-		var firstnames []string
-		for _, book := range bookings {
-			var names = strings.Fields(book) // split by space
+			fmt.Printf("the whole array %v", bookings)
 
-			firstnames = append(firstnames, names[0])
+			remainingTickets = remainingTickets - userTickets
+
+			fmt.Printf("thank you, %v %v for bookimh %v tickets recipt will be sent to %v \n",
+				firstname, lastname, userTickets, email)
+			var firstnames []string
+			for _, book := range bookings {
+				var names = strings.Fields(book) // split by space
+
+				firstnames = append(firstnames, names[0])
+			}
+			fmt.Println(firstnames)
+			fmt.Printf("%v tickets remaining", remainingTickets)
+			if remainingTickets == 0 {
+				fmt.Println("houseful")
+			}
+
+		} else {
+			fmt.Printf("we have only %v tickets remaing\n", remainingTickets)
 		}
-		fmt.Println(firstnames)
-		fmt.Printf("%v tickets remaining", remainingTickets)
-
 	}
 }
 
