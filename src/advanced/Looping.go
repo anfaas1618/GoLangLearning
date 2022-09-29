@@ -6,17 +6,20 @@ import "fmt"
 Summary
 
 	 *For statement
-		1.simple loop
-			a.for initializer; test; incrementor {}
-			b.for test {}
-			c.for {}
-		2.exiting early
-			a.break
-			b.continue
-			c.labels
-		3.looping over collection
-			arrays,slices,maps,string,channels
-			for k,b := range collection{ }
+		1.simple
+
+loop
+
+		a.for initializer; test; incrementor {}
+		b.for test {}
+		c.for {}
+	2.exiting early
+		a.break
+		b.continue
+		c.labels
+	3.looping over collection
+		arrays,slices,maps,string,channels
+		for k,b := range collection{ }
 */
 func main() {
 
